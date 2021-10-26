@@ -69,13 +69,36 @@ a:active, a:focus { outline: none; }
 	padding: 0px 30px;
 }
 
-main{
-	background: url('../img');
+.maze{
+	visibility: hidden;
+}
+.pacman__gates{
+	position: absolute;
+	top: 310px;
+	left: 318px;
+	height:12px;
+	width: 50px;
+	overflow: hidden;
+}
+.gates{
+	position: absolute;
+	top: 0px;
+	right:0px;
+	height: 8px;
+	width: 48px;
+	background-color: #fff;
+	animation: gates-open 4s ease-in 1 forwards running 15s ;
+	overflow: hidden;
 }
 
-
-
-
+@keyframes gates-open{
+	0%{
+		right: 0;
+	}
+	100%{
+		right: -318px;
+	}
+}
 
 
 
@@ -150,24 +173,254 @@ main{
 	width:100%;
 	height:100%;
 	object-fit: cover;
+	z-index: 3;
 }
 .enemy_red {
-	top:122px;
-	left: 100px;
+	top:348px;
+	left: 300px;
+	animation:ghost-shake 2s ease-in 20 alternate running 0s;
+	position: absolute;
+	z-index: 4;
 }
 .enemy_blue {
-	top:192px;
-	left: 240px;
+	top:354px;
+	left: 290px;
+	animation:ghost-shake 2s ease-in 20 alternate running 1s;
+	position: absolute;
+	z-index: 6;
 }
 .enemy_yellow {
-	top:192px;
-	left: 365px;
+	top:344px;
+	left: 335px;
+	animation:ghost-shake 2s ease-in 20 alternate running 1.5s; 
+	position: absolute;
+	z-index: 5;
 }
 .enemy_pink {
-	top:535px;
-	left: 635px;
+	top:349px;
+	left: 355px;
+	animation:ghost-shake 2s ease-in 20 alternate running 0.5s; 
+	position: absolute;
+	z-index: 7;
 }
+
+/*========================ENEMIES ANIMATION============================================================*/
+
+@keyframes ghost-shake{
+	0% {transform: translate(0px, 0px);}
+	100% {transform:translate(0px, -16px);}
+}
+
+
 /*=========================================ENEMIES====================================================*/
+
+
+
+/*+++++++++++++++++++++++++++++++++++++++++PACMAN-HERO+++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+
+.pacman__hero{
+	position: absolute;
+	top: 561px;
+	left: 138px;
+	background-color: yellow;
+	animation: pacman-moving-forward 4.5s linear 1 forwards 1s,
+	pacman-moving-down 1s linear 1 forwards 5.5s,
+	pacman-moving-forward-2 1s linear 1 forwards 6.5s,
+	pacman-moving-up 1s linear 1 forwards 7.5s,
+	pacman-moving-forward-3 1s linear 1 forwards 8.3s,
+	pacman-moving-up-2 1s linear 1 forwards 9.3s,
+	pacman-angry 30s linear 1 forwards 9.5s,
+	pacman-moving-back 3.5s linear 1 forwards 10.3s,
+	pacman-moving-down-2 1s linear 1 forwards 13.8s,
+	pacman-moving-back-2 3s linear 1 forwards 14.8s,
+	pacman-moving-square 24s linear infinite forwards 17.8s;
+
+}
+
+.hero{
+	width: 35px;
+	height: 35px;
+	border-radius: 50%;
+	z-index: 10;
+}
+
+.hero__eye {
+	position: absolute;
+	width: 5px;
+	height: 5px;
+	border-radius: 50%;
+	top: 4px;
+	right: 10px;
+	background: black;
+	z-index: 11;
+}
+
+.hero__mouth{
+	background: #000;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	clip-path: polygon(105% 74%, 38% 48%, 105% 21%);
+	animation: pacman-eat 0.7s infinite 0s,
+	pacman-angry-eat 0.2s 150 9.8s;
+	
+}
+
+/*+++++++++++++++++++++++++++++++++++++++++PACMAN-HERO+++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+/*=========================================PACMAN EATING ANIMATION==================================*/
+@keyframes pacman-eat {
+	0% {
+	clip-path: polygon(105% 74%, 38% 48%, 105% 21%);
+	}
+	25% {
+	clip-path: polygon(105% 60%, 38% 48%, 105% 40%);
+	}
+	50% {
+	clip-path: polygon(105% 50%, 38% 48%, 105% 50%);
+	}
+	75% {
+	clip-path: polygon(105% 59%, 38% 48%, 105% 35%);
+	}
+	100% {
+	clip-path: polygon(105% 74%, 38% 48%, 105% 21%);
+	}
+}
+@keyframes pacman-angry-eat {
+	0% {
+	clip-path: polygon(105% 74%, 38% 48%, 105% 21%);
+	}
+	25% {
+	clip-path: polygon(105% 60%, 38% 48%, 105% 40%);
+	}
+	50% {
+	clip-path: polygon(105% 50%, 38% 48%, 105% 50%);
+	}
+	75% {
+	clip-path: polygon(105% 59%, 38% 48%, 105% 35%);
+	}
+	100% {
+	clip-path: polygon(105% 74%, 38% 48%, 105% 21%);
+	}
+}
+@keyframes pacman-angry {
+	0%{background-color: rgb(209, 28, 8);}
+	99%{background-color: rgb(209, 28, 8);}
+	100%{background-color: yellow;}
+	
+}
+
+/*=========================================PACMAN EATING ANIMATION==================================*/
+
+
+/*+++++++++++++++++++++++++++++++++++++++++PACMAN MOVING ANIMATION+++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+@keyframes pacman-moving-forward {
+	0%{
+		transform: translate(0px, 0px);
+	}
+	100%{
+		transform: translate(372px, 0px);
+	}
+}
+@keyframes pacman-moving-down {
+	0%{
+		transform: translate(372px, 0px) rotate(90deg);
+	}
+	100%{
+		transform: translate(372px, 70px)rotate(90deg) ;
+	}
+}
+
+
+@keyframes pacman-moving-forward-2 {
+	0%{
+		transform: translate(372px, 70px);
+	}
+	100%{
+		transform: translate(442px, 70px);
+	}
+}
+@keyframes pacman-moving-up {
+	0%{
+		transform: translate(442px, 70px) rotate(-90deg);
+	}
+	100%{
+		transform: translate(442px, 0px) rotate(-90deg);
+	}
+}
+@keyframes pacman-moving-forward-3 {
+	0%{
+		transform: translate(442px, 0px) rotate(0deg);
+	}
+	100%{
+		transform: translate(494px, 0px) rotate(0deg);
+	}
+}
+@keyframes pacman-moving-up-2 {
+	0%{
+		transform: translate(494px, 0px) rotate(-90deg);
+	}
+	100%{
+		transform: translate(494px, -70px) rotate(-90deg);
+	}
+}
+@keyframes pacman-moving-back {
+	0%{
+		transform: translate(494px, -70px) rotateX(0deg) rotateY(180deg);
+	}
+	100%{
+		transform: translate(224px, -70px) rotateX(0deg) rotateY(180deg);
+	}
+}
+@keyframes pacman-moving-down-2 {
+	0%{
+		transform: translate(224px, -70px) rotateZ(-90deg) rotateY(180deg);
+	}
+	100%{
+		transform: translate(224px, 0px) rotateZ(-90deg) rotateY(180deg);
+	}
+}
+@keyframes pacman-moving-back-2 {
+	0%{
+		transform: translate(224px, 0px) rotateZ(0deg) rotateY(180deg);
+	}
+	100%{
+		transform: translate(0px, 0px) rotateZ(0deg) rotateY(180deg);
+	}
+}
+@keyframes pacman-moving-square {
+	0%{
+		transform: translate(0px, 0px) rotate(-90deg) ;
+	}
+	29.99%{
+		transform: translate(0px, -440px) rotate(-90deg);
+	}
+	30%{
+		transform: translate(0px, -440px) rotate(0deg);
+	}
+	49.99%{
+		transform: translate(372px, -440px) rotate(0deg);
+	}
+	50%{
+		transform: translate(372px, -440px) rotate(90deg) ;
+	}
+	79.99%{
+		transform: translate(372px, 0px) rotate(90deg) ;
+	}
+	80%{
+		transform: translate(372px, 0px) rotate(0deg) rotateY(180deg);
+	}
+	99.99%{
+		transform: translate(0px, 0px) rotate(0deg) rotateY(180deg);
+	}
+	100%{
+		transform: translate(0px, 0px) ;
+	}
+}
+
+/*+++++++++++++++++++++++++++++++++++++++++PACMAN MOVING ANIMATION+++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
 
 
@@ -175,7 +428,7 @@ main{
 /*=========================================DOTS=======================================================*/
 
 .dot {
-	background-color:red;
+	background-color: #fff;
 	width: 8px;
 	height: 8px;
 }
@@ -205,7 +458,7 @@ main{
 }
 /*================================2=======================*/
 .floor_2nd{
-	bottom: 24px
+	bottom: 24px;
 }
 .floor_2nd .floor__dot{
 	visibility: hidden;
@@ -218,7 +471,7 @@ main{
 }
 /*================================3=======================*/
 .floor_3rd{
-	bottom: 49px
+	bottom: 49px;
 }
 .floor_3rd .floor__dot{
 	visibility: hidden;
@@ -231,12 +484,11 @@ main{
 }
 /*================================4=======================*/
 .floor_4th{
-	bottom: 73px
+	bottom: 73px;
 }
 .floor_4th .floor__dot{
 	visibility: visible;
 }
-
 .floor_4th .floor__dot:nth-child(7),
 .floor_4th .floor__dot:nth-child(8),
 .floor_4th .floor__dot:nth-child(13),
@@ -245,6 +497,556 @@ main{
 .floor_4th .floor__dot:nth-child(20){
 	visibility: hidden;
 }
+.floor_4th .floor__dot:nth-child(21){
+	animation: dots-hide 1s linear 5.7s forwards;
+}
+.floor_4th .floor__dot:nth-child(22){
+	animation: dots-hide 1s linear 6.0s forwards;
+}
+.floor_4th .floor__dot:nth-child(23){
+	animation: dots-hide 1s linear 6.3s forwards;
+}
+.floor_4th .floor__dot:nth-child(24){
+	animation: dots-hide 1s linear 6.6s forwards;
+}
+/*================================5=======================*/
+.floor_5th{
+	bottom: 98px;
+}
+.floor_5th .floor__dot{
+	visibility: hidden;
+}
+.floor_5th .floor__dot:nth-child(3),
+.floor_5th .floor__dot:nth-child(6),
+.floor_5th .floor__dot:nth-child(9),
+.floor_5th .floor__dot:nth-child(18),
+.floor_5th .floor__dot:nth-child(21),
+.floor_5th .floor__dot:nth-child(24){
+	visibility: visible;
+}
+.floor_5th .floor__dot:nth-child(21){
+	animation: dots-hide 1s linear 5.4s forwards;
+}
+.floor_5th .floor__dot:nth-child(24){
+	animation: dots-hide 1s linear 6.9s forwards;
+}
+/*================================6=======================*/
+.floor_6th{
+	bottom: 122px;
+}
+.floor_6th .floor__dot{
+	visibility: hidden;
+}
+.floor_6th .floor__dot:nth-child(3),
+.floor_6th .floor__dot:nth-child(6),
+.floor_6th .floor__dot:nth-child(9),
+.floor_6th .floor__dot:nth-child(18),
+.floor_6th .floor__dot:nth-child(21),
+.floor_6th .floor__dot:nth-child(24){
+	visibility: visible;
+}
+.floor_6th .floor__dot:nth-child(21){
+	animation: dots-hide 1s linear 5.1s forwards;
+}
+.floor_6th .floor__dot:nth-child(24){
+	animation: dots-hide 1s linear 7.2s forwards;
+}
+/*================================7=======================*/
+.floor_7th{
+	bottom: 147px;
+}
+.floor_7th .floor__dot{
+	visibility: visible;
+}
+.floor_7th .floor__dot:nth-child(4),
+.floor_7th .floor__dot:nth-child(5),
+.floor_7th .floor__dot:nth-child(22),
+.floor_7th .floor__dot:nth-child(23){
+	visibility: hidden;
+}
+
+.floor_7th .floor__dot:nth-child(6){
+	animation: dots-hide 1s linear 0.3s forwards;
+}
+.floor_7th .floor__dot:nth-child(7){
+	animation: dots-hide 1s linear 0.6s forwards;
+}
+.floor_7th .floor__dot:nth-child(8){
+	animation: dots-hide 1s linear 0.9s forwards;
+}
+.floor_7th .floor__dot:nth-child(9){
+	animation: dots-hide 1s linear 1.2s forwards;
+}
+.floor_7th .floor__dot:nth-child(10){
+	animation: dots-hide 1s linear 1.5s forwards;
+}
+.floor_7th .floor__dot:nth-child(11){
+	animation: dots-hide 1s linear 1.8s forwards;
+}
+.floor_7th .floor__dot:nth-child(12){
+	animation: dots-hide 1s linear 2.1s forwards;
+}
+.floor_7th .floor__dot:nth-child(13){
+	animation: dots-hide 1s linear 2.4s forwards;
+}
+.floor_7th .floor__dot:nth-child(14){
+	animation: dots-hide 1s linear 2.7s forwards;
+}
+.floor_7th .floor__dot:nth-child(15){
+	animation: dots-hide 1s linear 3s forwards;
+}
+.floor_7th .floor__dot:nth-child(16){
+	animation: dots-hide 1s linear 3.3s forwards;
+}
+.floor_7th .floor__dot:nth-child(17){
+	animation: dots-hide 1s linear 3.6s forwards;
+}
+.floor_7th .floor__dot:nth-child(18){
+	animation: dots-hide 1s linear 3.9s forwards;
+}
+.floor_7th .floor__dot:nth-child(19){
+	animation: dots-hide 1s linear 4.2s forwards;
+}
+.floor_7th .floor__dot:nth-child(20){
+	animation: dots-hide 1s linear 4.5s forwards;
+}
+.floor_7th .floor__dot:nth-child(21){
+	animation: dots-hide 1s linear 4.8s forwards;
+}
+.floor_7th .floor__dot:nth-child(24){
+	animation: dots-hide 1s linear 7.7s forwards;
+}
+.floor_7th .floor__dot:nth-child(25){
+	animation: dots-hide 1s linear 8.0s forwards;
+}
+.floor_7th .floor__dot:nth-child(26){
+	animation: dots-hide 1s linear 8.3s forwards;
+}
+
+@keyframes dots-hide {
+	0%{opacity: 1;}
+	100%{opacity: 0;}
+}
 
 
+
+/*================================8=======================*/
+.floor_8th{
+	bottom: 171px;
+}
+.floor_8th .floor__dot{
+	visibility: hidden;
+}
+.floor_8th .floor__dot:nth-child(1),
+.floor_8th .floor__dot:nth-child(6),
+.floor_8th .floor__dot:nth-child(12),
+.floor_8th .floor__dot:nth-child(15),
+.floor_8th .floor__dot:nth-child(21),
+.floor_8th .floor__dot:nth-child(26){
+	visibility: visible;
+}
+.floor_8th .floor__dot:nth-child(1),
+.floor_8th .floor__dot:nth-child(26){
+	transform: scale(2.5);
+	border-radius: 35%;
+}
+.floor_8th .floor__dot:nth-child(26){
+	animation: dots-hide 1s linear 8.8s forwards;
+}
+.floor_8th .floor__dot:nth-child(15){
+	animation: dots-hide 1s linear 13.5s forwards;
+}
+.floor_8th .floor__dot:nth-child(6){
+	animation: dots-hide 1s linear 17.5s forwards;
+}
+.floor_8th .floor__dot:nth-child(21){
+	animation: dots-hide 1s linear 35.6s forwards;
+}
+/*================================9=======================*/
+.floor_9th{
+	bottom: 196px;
+}
+.floor_9th .floor__dot{
+	visibility: hidden;
+}
+.floor_9th .floor__dot:nth-child(1),
+.floor_9th .floor__dot:nth-child(6),
+.floor_9th .floor__dot:nth-child(12),
+.floor_9th .floor__dot:nth-child(15),
+.floor_9th .floor__dot:nth-child(21),
+.floor_9th .floor__dot:nth-child(26){
+	visibility: visible;
+}
+.floor_9th .floor__dot:nth-child(26){
+	animation: dots-hide 1s linear 9.1s forwards;
+}
+.floor_9th .floor__dot:nth-child(15){
+	animation: dots-hide 1s linear 13.2s forwards;
+}
+.floor_9th .floor__dot:nth-child(6){
+	animation: dots-hide 1s linear 17.8s forwards;
+}
+.floor_9th .floor__dot:nth-child(21){
+	animation: dots-hide 1s linear 35.3s forwards;
+}
+/*================================10=======================*/
+.floor_10th{
+	bottom: 220px;
+}
+.floor_10th .floor__dot{
+	visibility: visible;
+}
+
+.floor_10th .floor__dot:nth-child(13),
+.floor_10th .floor__dot:nth-child(14){
+	visibility: hidden;
+}
+.floor_10th .floor__dot:nth-child(26){
+	animation: dots-hide 1s linear 9.4s forwards;
+}
+.floor_10th .floor__dot:nth-child(25){
+	animation: dots-hide 1s linear 9.7s forwards;
+}
+.floor_10th .floor__dot:nth-child(24){
+	animation: dots-hide 1s linear 10s forwards;
+}
+.floor_10th .floor__dot:nth-child(23){
+	animation: dots-hide 1s linear 10.3s forwards;
+}
+.floor_10th .floor__dot:nth-child(22){
+	animation: dots-hide 1s linear 10.7s forwards;
+}
+.floor_10th .floor__dot:nth-child(21){
+	animation: dots-hide 1s linear 11s forwards;
+}
+.floor_10th .floor__dot:nth-child(20){
+	animation: dots-hide 1s linear 11.3s forwards;
+}
+.floor_10th .floor__dot:nth-child(19){
+	animation: dots-hide 1s linear 11.7s forwards;
+}
+.floor_10th .floor__dot:nth-child(18){
+	animation: dots-hide 1s linear 12.0s forwards;
+}
+.floor_10th .floor__dot:nth-child(17){
+	animation: dots-hide 1s linear 12.3s forwards;
+}
+.floor_10th .floor__dot:nth-child(16){
+	animation: dots-hide 1s linear 12.6s forwards;
+}
+.floor_10th .floor__dot:nth-child(15){
+	animation: dots-hide 1s linear 12.9s forwards;
+}
+.floor_10th .floor__dot:nth-child(6){
+	animation: dots-hide 1s linear 18.2s forwards;
+}
+/*================================11=======================*/
+.floor_11th{
+	bottom: 244px;
+}
+.floor_middle .floor__dot{
+	visibility: hidden;
+}
+
+.floor_middle .floor__dot:nth-child(6),
+.floor_middle .floor__dot:nth-child(21){
+	visibility: visible;
+}
+.floor_11th .floor__dot:nth-child(6){
+	animation: dots-hide 0.5s linear 18.8s forwards;
+}
+.floor_11th .floor__dot:nth-child(21){
+	animation: dots-hide 1s linear 34.7s forwards;
+}
+/*================================12=======================*/
+.floor_12th{
+	bottom: 269px;
+}
+.floor_12th .floor__dot:nth-child(6){
+	animation: dots-hide 0.5s linear 19.0s forwards;
+}
+.floor_12th .floor__dot:nth-child(21){
+	animation: dots-hide 1s linear 34.3s forwards;
+}
+/*================================13=======================*/
+.floor_13th{
+	bottom: 269px;
+}
+.floor_13th .floor__dot:nth-child(6){
+	animation: dots-hide 0.5s linear 19.7s forwards;
+}
+.floor_13th .floor__dot:nth-child(21){
+	animation: dots-hide 1s linear 34.0s forwards;
+}
+/*================================14=======================*/
+.floor_14th{
+	bottom: 294px;
+}
+.floor_14th .floor__dot:nth-child(6){
+	animation: dots-hide 0.5s linear 20.1s forwards;
+}
+.floor_14th .floor__dot:nth-child(21){
+	animation: dots-hide 1s linear 33.7s forwards;
+}
+/*================================15=======================*/
+.floor_15th{
+	bottom: 318px;
+}
+.floor_15th .floor__dot:nth-child(6){
+	animation: dots-hide 0.5s linear 20.3s forwards;
+}
+
+.floor_15th .floor__dot:nth-child(21){
+	animation: dots-hide 1s linear 33.3s forwards;
+}
+/*================================16=======================*/
+.floor_16th{
+	bottom: 343px;
+}
+.floor_16th .floor__dot:nth-child(6){
+	animation: dots-hide 0.5s linear 20.6s forwards;
+}
+.floor_16th .floor__dot:nth-child(21){
+	animation: dots-hide 1s linear 33.0s forwards;
+}
+/*================================17=======================*/
+.floor_17th{
+	bottom: 367px;
+}
+.floor_17th .floor__dot:nth-child(6){
+	animation: dots-hide 0.5s linear 20.9s forwards;
+}
+.floor_17th .floor__dot:nth-child(21){
+	animation: dots-hide 0.5s linear 32.8s forwards;
+}
+/*================================18=======================*/
+.floor_18th{
+	bottom: 391px;
+}
+.floor_18th .floor__dot:nth-child(6){
+	animation: dots-hide 0.5s linear 21.2s forwards;
+}
+.floor_18th .floor__dot:nth-child(21){
+	animation: dots-hide 0.5s linear 32.5s forwards;
+}
+/*================================19=======================*/
+.floor_19th{
+	bottom: 416px;
+}
+.floor_19th .floor__dot:nth-child(6){
+	animation: dots-hide 0.5s linear 21.5s forwards;
+}
+.floor_19th .floor__dot:nth-child(21){
+	animation: dots-hide 0.5s linear 32.1s forwards;
+}
+/*================================20=======================*/
+.floor_20th{
+	bottom: 440px;
+}
+.floor_20th .floor__dot:nth-child(6){
+	animation: dots-hide 0.5s linear 21.8s forwards;
+}
+.floor_20th .floor__dot:nth-child(21){
+	animation: dots-hide 0.5s linear 31.6s forwards;
+}
+/*================================21=======================*/
+.floor_21st{
+	bottom: 464px;
+}
+.floor_21st .floor__dot:nth-child(6){
+	animation: dots-hide 0.5s linear 22.2s forwards;
+}
+.floor_21st .floor__dot:nth-child(21){
+	animation: dots-hide 0.5s linear 31.3s forwards;
+}
+/*================================22=======================*/
+.floor_22nd{
+	bottom: 489px;
+}
+.floor_22nd .floor__dot:nth-child(6){
+	animation: dots-hide 0.5s linear 22.7s forwards;
+}
+.floor_22nd .floor__dot:nth-child(21){
+	animation: dots-hide 0.5s linear 29.8s forwards;
+}
+.floor_22nd .floor__dot:nth-child(21){
+	animation: dots-hide 0.5s linear 31.0s forwards;
+}
+/*================================23=======================*/
+.floor_23rd{
+	bottom: 513px
+}
+.floor_23rd .floor__dot{
+	visibility: visible;
+}
+.floor_23rd .floor__dot:nth-child(7),
+.floor_23rd .floor__dot:nth-child(8),
+.floor_23rd .floor__dot:nth-child(13),
+.floor_23rd .floor__dot:nth-child(14),
+.floor_23rd .floor__dot:nth-child(19),
+.floor_23rd .floor__dot:nth-child(20){
+	visibility: hidden;
+}
+.floor_23rd .floor__dot:nth-child(6){
+	animation: dots-hide 1s linear 23.0s forwards;
+}
+.floor_23rd .floor__dot:nth-child(21){
+	animation: dots-hide 0.5s linear 30.7s forwards;
+}
+/*================================24=======================*/
+.floor_24th{
+	bottom: 538px;
+}
+.floor_24th .floor__dot{
+	visibility: hidden;
+}
+.floor_24th .floor__dot:nth-child(1),
+.floor_24th .floor__dot:nth-child(6),
+.floor_24th .floor__dot:nth-child(9),
+.floor_24th .floor__dot:nth-child(18),
+.floor_24th .floor__dot:nth-child(21),
+.floor_24th .floor__dot:nth-child(26){
+	visibility: visible;
+}
+.floor_24th .floor__dot:nth-child(6){
+	animation: dots-hide 1s linear 23.4s forwards;
+}
+.floor_24th .floor__dot:nth-child(21){
+	animation: dots-hide 0.5s linear 30.2s forwards;
+}
+/*================================25=======================*/
+.floor_25th{
+	bottom: 563px;
+}
+.floor_25th .floor__dot{
+	visibility: hidden;
+}
+.floor_25th .floor__dot:nth-child(1),
+.floor_25th .floor__dot:nth-child(6),
+.floor_25th .floor__dot:nth-child(9),
+.floor_25th .floor__dot:nth-child(18),
+.floor_25th .floor__dot:nth-child(21),
+.floor_25th .floor__dot:nth-child(26){
+	visibility: visible;
+}
+.floor_25th .floor__dot:nth-child(6){
+	animation: dots-hide 1s linear 23.6s forwards;
+}
+.floor_25th .floor__dot:nth-child(21){
+	animation: dots-hide 1s linear 29.7s forwards;
+}
+/*================================26=======================*/
+.floor_26th{
+	bottom: 587px;
+}
+.floor_26th .floor__dot:nth-child(6){
+	animation: dots-hide 1s linear 24.2s forwards;
+}
+.floor_26th .floor__dot:nth-child(7){
+	animation: dots-hide 1s linear 24.5s forwards;
+}
+.floor_26th .floor__dot:nth-child(8){
+	animation: dots-hide 1s linear 24.8s forwards;
+}
+.floor_26th .floor__dot:nth-child(9){
+	animation: dots-hide 1s linear 25.1s forwards;
+}
+.floor_26th .floor__dot:nth-child(10){
+	animation: dots-hide 1s linear 25.4s forwards;
+}
+.floor_26th .floor__dot:nth-child(11){
+	animation: dots-hide 1s linear 25.7s forwards;
+}
+.floor_26th .floor__dot:nth-child(12){
+	animation: dots-hide 1s linear 26s forwards;
+}
+.floor_26th .floor__dot:nth-child(13){
+	animation: dots-hide 1s linear 26.4s forwards;
+}
+.floor_26th .floor__dot:nth-child(14){
+	animation: dots-hide 1s linear 26.7s forwards;
+}
+.floor_26th .floor__dot:nth-child(15){
+	animation: dots-hide 1s linear 27.0s forwards;
+}
+.floor_26th .floor__dot:nth-child(16){
+	animation: dots-hide 1s linear 27.3s forwards;
+}
+.floor_26th .floor__dot:nth-child(17){
+	animation: dots-hide 1s linear 27.6s forwards;
+}
+.floor_26th .floor__dot:nth-child(18){
+	animation: dots-hide 1s linear 27.9s forwards;
+}
+.floor_26th .floor__dot:nth-child(19){
+	animation: dots-hide 1s linear 28.2s forwards;
+}
+.floor_26th .floor__dot:nth-child(20){
+	animation: dots-hide 1s linear 28.5s forwards;
+}
+.floor_26th .floor__dot:nth-child(21){
+	animation: dots-hide 1s linear 28.8s forwards;
+}
+/*================================27=======================*/
+.floor_27th{
+	bottom: 611px;
+}
+.floor_27th .floor__dot{
+	visibility: hidden;
+}
+.floor_27th .floor__dot:nth-child(1),
+.floor_27th .floor__dot:nth-child(6),
+.floor_27th .floor__dot:nth-child(12),
+.floor_27th .floor__dot:nth-child(15),
+.floor_27th .floor__dot:nth-child(21),
+.floor_27th .floor__dot:nth-child(26){
+	visibility: visible;
+}
+/*================================28=======================*/
+.floor_28th{
+	bottom: 636px;
+}
+.floor_28th .floor__dot{
+	visibility: hidden;
+}
+.floor_28th .floor__dot:nth-child(1),
+.floor_28th .floor__dot:nth-child(6),
+.floor_28th .floor__dot:nth-child(12),
+.floor_28th .floor__dot:nth-child(15),
+.floor_28th .floor__dot:nth-child(21),
+.floor_28th .floor__dot:nth-child(26){
+	visibility: visible;
+}
+.floor_28th .floor__dot:nth-child(1),
+.floor_28th .floor__dot:nth-child(26){
+	transform: scale(2.5);
+	border-radius: 35%;
+}
+/*================================29=======================*/
+.floor_29th{
+	bottom: 660px;
+}
+.floor_29th .floor__dot{
+	visibility: hidden;
+}
+.floor_29th .floor__dot:nth-child(1),
+.floor_29th .floor__dot:nth-child(6),
+.floor_29th .floor__dot:nth-child(12),
+.floor_29th .floor__dot:nth-child(15),
+.floor_29th .floor__dot:nth-child(21),
+.floor_29th .floor__dot:nth-child(26){
+	visibility: visible;
+}
+/*================================30=======================*/
+.floor_30th{
+	top:0;
+}
+.floor_30th .floor__dot{
+	visibility: visible;
+}
+
+.floor_30th .floor__dot:nth-child(13),
+.floor_30th .floor__dot:nth-child(14){
+	visibility: hidden;
+}
 /*=========================================DOTS=======================================================*/
