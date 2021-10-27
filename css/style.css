@@ -3,7 +3,14 @@
 
 /*Поключение Шрифтов*/
 @import url(https://fonts.googleapis.com/css?family=Roboto:regular,700,900&display=swap&subset=cyrillic-ext);
-
+@font-face {
+	font-family: 'Emulogic';
+	src: url('../fonts/Emulogic.eot');
+	src: url('../fonts/Emulogic.eot?#iefix') format('embedded-opentype'), url('../fonts/Emulogic.woff2') format('woff2'), url('../fonts/Emulogic.woff') format('woff');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
 
 /* ОБНУЛЕНИЕ СТИЛЕЙ */
 *,
@@ -119,6 +126,213 @@ a:active, a:focus { outline: none; }
 	height: 100%;
 }
 
+.pacman__player-one {
+	position: absolute;
+	position: absolute;
+	top: 270px;
+	left: 50%;
+	transform: translate(-50%);
+	color: rgb(3, 136, 184);
+	font-family:'Emulogic';
+	font-size: 26px;
+	opacity: 0;
+	animation:game-over 0.3s ease infinite alternate forwards 0s,
+	player-one-stop 0.1s linear 1 forwards 10s;
+}
+.pacman__ready {
+	position: absolute;
+	top: 415px;
+	left: 50%;
+	transform: translate(-50%);
+	color: rgb(166, 184, 3);
+	font-family:'Emulogic';
+	font-size: 26px;
+	opacity: 0;
+	animation:game-over 0.3s ease infinite alternate forwards 0s,
+	player-one-stop 0.1s linear 1 forwards 10s;
+}
+.pacman__hi-score{
+	top:150px;
+	left: 155px;
+	
+	position: absolute;
+	font-family:'Emulogic';
+	font-size: 24px;
+	color:brown;
+}
+.pacman__1up{
+	top:239px;
+	left: 175px;
+	position: absolute;
+	font-family:'Emulogic';
+	font-size: 24px;
+	color:brown;
+	opacity: 0;
+	animation:game-over 0.3s ease infinite alternate forwards 0.5s;
+}
+.pacman__hi-score-points{
+	top:194px;
+	left: 205px;
+	
+	position: absolute;
+	font-family:'Emulogic';
+	font-size: 24px;
+	color:whitesmoke;
+}
+.pacman__player-points{
+	top:284px;
+	left: 250px;
+	
+	position: absolute;
+	font-family:'Emulogic';
+	font-size: 24px;
+	color:whitesmoke;
+}
+.pacman__game-over{
+	position: absolute;
+	top: 415px;
+	left: 50%;
+	transform: translate(-50%);
+	color:brown;
+	font-family:'Emulogic';
+	font-size: 27px;
+	opacity: 0;
+	animation:game-over 0.3s ease infinite alternate forwards 57.2s;
+}
+
+@keyframes game-over {
+	100%{
+		opacity: 1;
+	}
+}
+@keyframes player-one-stop {
+	100%{
+		opacity: 0;
+	}
+}
+
+
+
+
+
+/*===================================FROOTS======================================================*/
+
+.pacman__cherry img{
+	position: absolute;
+	top: 685px;
+	left: 500px;
+	width: 33px;
+	opacity: 0;
+	animation: cherry-appear 0.001s linear 1 forwards 20s,
+	cherry-eaten 0.00000001s linear 1 forwards 41.8s;
+}
+.pacman__strawberry img{
+	position: absolute;
+	top: 242px;
+	left: 872px;
+	width: 30px;
+	opacity: 0;
+	animation: cherry-appear 0.001s linear 1 forwards 35s,
+	strawberry-eaten 0.00000000011s linear 1 forwards 53.8s;
+}
+.pacman__cherry-point{
+	position: absolute;
+	top:690px;
+	left: 500px;
+	opacity: 0;
+	position: absolute;
+	font-family:'Emulogic';
+	font-size: 12px;
+	color: rgb(3, 136, 184);
+	animation: cherry-point-appear 3s linear 1 forwards 42s;
+}
+.pacman__strawberry-point{
+	position: absolute;
+	top:247px;
+	left: 867px;
+	opacity: 0;
+	position: absolute;
+	font-family:'Emulogic';
+	font-size: 12px;
+	color: rgb(3, 136, 184);
+	animation: cherry-point-appear 3s linear 1 forwards 54s;
+}
+@keyframes cherry-point-appear {
+	0%{
+		opacity: 0;
+	}
+	0.00000001%{
+		opacity: 1;
+	}
+	99,9999999%{
+		opacity: 1;
+	}
+	100%{
+		opacity: 0;
+	}
+}
+@keyframes cherry-appear {
+	100%{
+		opacity: 1;
+	}
+}
+@keyframes cherry-eaten {
+	0%{
+		transform: translate(0px, 0px);
+		opacity: 0;
+	}
+	100%{
+		transform: translate(-185px, 100px);
+		opacity: 1;
+	}
+}
+@keyframes strawberry-eaten {
+	0%{
+		transform: translate(0px, 0px);
+		opacity: 0;
+	}
+	100%{
+		transform: translate(-595px, 538px);
+		opacity: 1;
+	}
+}
+
+.pacman__lifes img{
+	position: absolute;
+	top: 835px;
+	left: 230px;
+	width: 35px;
+	opacity: 0;
+	animation:game-over 0.3s ease infinite alternate forwards 0s,
+	life-dissappear 0.000001s ease 1 forwards 57.2s;
+}
+.pacman__lifes_second img{
+	position: absolute;
+	top: 835px;
+	left: 270px;
+	width: 35px;
+	opacity: 1;
+	animation: none;
+}
+.pacman__lifes_third img{
+	position: absolute;
+	top: 835px;
+	left: 310px;
+	width: 35px;
+	opacity: 1;
+	animation: none;
+}
+
+@keyframes life-dissappear {
+	100%{
+		opacity: 0;
+	}
+}
+/*===================================FROOTS======================================================*/
+
+
+
+
 
 
 /*===================================GAME_FIELD======================================================*/
@@ -128,6 +342,7 @@ a:active, a:focus { outline: none; }
 	left: 22%;
 	width: 684px;
 	height: 760px;
+	overflow: hidden;
 }
 .packman__game-field .field{
 	position: absolute;
@@ -178,31 +393,79 @@ a:active, a:focus { outline: none; }
 .enemy_red {
 	top:348px;
 	left: 300px;
-	animation:ghost-shake 2s ease-in 20 alternate running 0s;
+	animation:ghost-shake 2s ease-in 20 alternate running 0s,
+	red-move 9s linear 1 forwards 17.5s,
+	red-move-infinite 22s linear infinite forwards 27s,
+	red-stop 6000s linear 1 forwards 57.2s;
 	position: absolute;
 	z-index: 4;
 }
 .enemy_blue {
 	top:354px;
 	left: 290px;
-	animation:ghost-shake 2s ease-in 20 alternate running 1s;
+	animation:ghost-shake 2s ease-in 20 alternate running 1s,
+	blue-move 6.5s linear 1 forwards 15.5s,
+	blue-move-infinite 9.3s linear infinite forwards 22s,
+	blue-stop 6000s linear 1 forwards 57.2s;
 	position: absolute;
-	z-index: 6;
+	z-index: 666;
 }
 .enemy_yellow {
 	top:344px;
 	left: 335px;
-	animation:ghost-shake 2s ease-in 20 alternate running 1.5s; 
+	animation:ghost-shake 2s ease-in 20 alternate running 1.5s,
+	yellow-move 18s linear 1 forwards 16.5s,
+	yellow-move-infinite 16s linear infinite forwards 34s, 
+	yellow-stop 6000s linear 1 forwards 57.2s;
 	position: absolute;
 	z-index: 5;
+
 }
 .enemy_pink {
 	top:349px;
 	left: 355px;
-	animation:ghost-shake 2s ease-in 20 alternate running 0.5s; 
+	transform: rotateY(-180deg);
+	animation:ghost-shake-pink 2s ease-in 20 alternate running 0.5s,
+	pinky-move 6.5s linear 1 forwards 14.5s,
+	pinky-alive 18s linear 1 forwards 23s,
+	pinky-square-move 8s linear 10 forwards 41s,
+	pinky-stop 6000s linear 1 forwards 57.2s;
 	position: absolute;
 	z-index: 7;
 }
+.pacman__enemy-eyes img{
+	position: absolute;
+	top: 350px;
+	left: 146px;
+	width: 20px;
+	opacity: 0;
+	animation:eyes-appear 2s linear 1 forwards 21s ;
+}
+
+@keyframes eyes-appear {
+	0%{
+		opacity: 1;
+		transform: translate(0px, 0px);
+	}
+	25%{
+		transform: translate(75px, 0px);
+	}
+	50%{
+		transform: translate(75px, -70px);
+	}
+	75%{
+		transform: translate(180px, -70px);
+	}
+	99.99999%{
+		opacity: 1;
+		transform: translate(180px, 0px);
+	}
+	100%{
+		opacity: 0;
+		transform: translate(140px, 0px);
+	}
+}
+
 
 /*========================ENEMIES ANIMATION============================================================*/
 
@@ -210,6 +473,304 @@ a:active, a:focus { outline: none; }
 	0% {transform: translate(0px, 0px);}
 	100% {transform:translate(0px, -16px);}
 }
+@keyframes ghost-shake-pink{
+	0% {transform: translate(0px, 0px) rotateY(-180deg);}
+	100% {transform:translate(0px, -16px) rotateY(-180deg);}
+}
+/*========================ENEMIY MOVMENT ANIMATION============================================================*/
+
+@keyframes pinky-move{
+	0%{
+		transform: translate(0px, 0px) rotateY(-180deg);
+	}
+	12%{
+		transform: translate(-30px, 0px) rotateY(-180deg);
+	}
+	33.999%{
+		transform: translate(-30px, -80px) rotateY(-180deg);
+	}
+	34%{
+		transform: translate(-30px, -80px) rotateY(-180deg);
+	}
+	56%{
+		transform: translate(-140px, -80px) rotateY(-180deg);
+	}
+	78%{
+		transform: translate(-140px, -10px) rotateY(-180deg);
+	}
+	100%{
+		transform: translate(-215px, -10px) rotateY(-180deg);
+		visibility: hidden;
+	}
+}
+@keyframes pinky-alive {
+	0%{
+		transform: translate(-30px,-20px) rotateY(-180deg);
+		visibility: visible;
+	}
+	5%{
+		transform: translate(-30px,-80px) rotateY(-180deg);
+		
+	}
+	10%{
+		transform: translate(-65px,-80px) rotateY(-180deg);
+		
+	}
+	17%{
+		transform: translate(-65px,-155px) rotateY(-180deg);
+		
+	}
+	23.9999%{
+		transform: translate(-140px,-155px) rotateY(-180deg);
+		
+	}
+	24%{
+		transform: translate(-140px,-155px) rotateY(0deg);
+		
+	}
+	31%{
+		transform: translate(-140px,-230px) rotateY(0deg);
+		
+	}
+	38%{
+		transform: translate(-65px,-230px) rotateY(0deg);
+		
+	}
+	45%{
+		transform: translate(-65px,-325px) rotateY(0deg);
+	}
+	45.000001%{
+		transform: translate(-65px,-325px) rotateY(-180deg);
+	}
+	66%{
+		transform: translate(-335px,-325px) rotateY(-180deg);
+	}
+	66.00001%{
+		transform: translate(-335px,-325px) rotateY(0deg);
+	}
+	80%{
+		transform: translate(-335px,-230px) rotateY(0deg);
+		visibility: hidden;
+	}
+	100%{
+		transform: translate(-335px,-230px);
+		visibility: hidden;
+	}
+}
+@keyframes pinky-square-move {
+	0%{
+		transform: translate(-335px,-230px) rotateY(0deg);
+		visibility: visible;
+	}
+	35%{
+		transform: translate(-65px,-230px) rotateY(0deg);
+	}
+
+	49.9999%{
+		transform: translate(-65px,-325px) rotateY(0deg);
+	}
+	50%{
+		transform: translate(-65px,-325px) rotateY(-180deg);
+	}
+	85%{
+		transform: translate(-335px,-325px) rotateY(-180deg);
+	}
+	100%{
+		transform: translate(-335px,-230px) rotateY(-180deg);
+	}
+	
+}
+@keyframes pinky-stop{
+	0%{
+		transform: translate(-305px, -230px);
+	}
+	100%{
+		transform: translate(-305px, -230px);
+	}
+}
+
+@keyframes yellow-move{
+	0%{
+		transform: translate(0px, 0px);
+	}
+	7%{
+		transform: translate(0px, -75px);
+	}
+	14%{
+		transform: translate(100px, -75px);
+	}
+	21%{
+		transform: translate(100px, 0px);
+	}
+	28%{
+		transform: translate(175px, 0px);
+	}
+	51%{
+		transform: translate(175px, 290px);
+
+	}
+	59%{
+		transform: translate(300px, 290px);
+
+	}
+	64.999%{
+		transform: translate(300px, 365px) rotateY(0deg);
+	}
+	65%{
+		transform: translate(300px, 365px) rotateY(-180deg);
+	}
+
+	100%{
+		transform: translate(-315px, 365px) rotateY(-180deg);
+	}
+}
+@keyframes yellow-move-infinite{
+	0%{
+		transform: translate(-315px, 365px) rotateY(-180deg);
+	}
+	0.0000001%{
+		transform: translate(-315px, 365px) rotateY(0deg);
+	}
+	49.9999%{
+		transform: translate(300px, 365px) rotateY(0deg);
+	}
+	50%{
+		transform: translate(300px, 365px) rotateY(-180deg);
+	}
+	99.9999%{
+		transform: translate(-315px, 365px) rotateY(-180deg);
+	}
+	99.99999%{
+		transform: translate(-315px, 365px) rotateY(0deg);
+	}
+	100%{
+		transform: translate(-315px, 365px) rotateY(-180deg);
+	}
+}
+@keyframes yellow-stop{
+	0%{
+		transform: translate(245px, 365px);
+	}
+	100%{
+		transform: translate(245px, 365px);
+	}
+}
+@keyframes blue-move{
+	0%{
+		transform: translate(0px, 0px);
+	}
+	8%{
+		transform: translate(37px, 0px);
+	}
+
+	26%{
+		transform: translate(37px, -85px);
+	}
+	44%{
+		transform: translate(148px, -85px);
+	}
+	62%{
+		transform: translate(148px, -13px);
+	}
+	100%{
+		transform: translate(400px, -13px);
+	}
+}
+@keyframes blue-move-infinite {
+	0%{
+		transform: translate(-300px, -13px);
+	}
+	25%{
+		transform: translate(-73px, -13px);
+	}
+
+	35%{
+		transform: translate(-73px, -85px);
+	}
+	60%{
+		transform: translate(148px, -85px);
+	}
+	70%{
+		transform: translate(148px, -13px);
+	}
+	100%{
+		transform: translate(400px, -13px);
+	}
+}
+@keyframes blue-stop {
+	0%{
+		transform: translate(222px, -13px);
+	}
+	100%{
+		transform: translate(222px, -13px);
+	}
+}
+@keyframes red-move{
+	0%{
+		transform: translate(0px, 0px);
+	}
+	7%{
+		transform: translate(30px, 0px);
+	}
+	21%{
+		transform: translate(30px, -80px) rotateY(0deg);
+	}
+	21.00001%{
+		transform: translate(30px, -80px) rotateY(-180deg);
+	}
+	35%{
+		transform: translate(-85px, -80px) rotateY(-180deg);
+	}
+	59%{
+		transform: translate(-85px, 140px) rotateY(-180deg);
+	}
+	59.000001%{
+		transform: translate(-85px, 140px) rotateY(0deg);
+	}
+	71%{
+		transform: translate(-10px, 140px) rotateY(0deg);
+	}
+	83%{
+		transform: translate(-10px, 213px) rotateY(0deg);
+	}
+	83.000001%{
+		transform: translate(-10px, 213px) rotateY(-180deg);
+	}
+	100%{
+		transform: translate(-155px, 213px) rotateY(-180deg);
+	}
+}
+@keyframes red-move-infinite{
+	0%{
+		transform: translate(-155px, 213px);
+	}
+	30%{
+		transform: translate(-155px, -230px);
+	}
+	50%{
+		transform: translate(212px, -230px) ;
+	}
+	80%{
+		transform: translate(212px, 213px);
+	}
+	80.000011%{
+		transform: translate(212px, 213px) rotateY(-180deg);
+	}
+	100%{
+		transform: translate(-155px, 213px) rotateY(-180deg) ;
+	}
+}
+@keyframes red-stop{
+	0%{
+		transform: translate(-20px, -230px);
+	}
+	100%{
+		transform: translate(-20px, -230px);
+	}
+
+}
+
+
 
 
 /*=========================================ENEMIES====================================================*/
@@ -234,7 +795,8 @@ a:active, a:focus { outline: none; }
 	pacman-moving-back 3.5s linear 1 forwards 10.3s,
 	pacman-moving-down-2 1s linear 1 forwards 13.8s,
 	pacman-moving-back-2 3s linear 1 forwards 14.8s,
-	pacman-moving-square 24s linear infinite forwards 17.8s;
+	pacman-moving-square 24s linear infinite forwards 17.8s,
+	pacman-dead 0.0000001s linear 1 forwards 57.2s;
 
 }
 
@@ -305,9 +867,16 @@ a:active, a:focus { outline: none; }
 	}
 }
 @keyframes pacman-angry {
-	0%{background-color: rgb(209, 28, 8);}
-	99%{background-color: rgb(209, 28, 8);}
-	100%{background-color: yellow;}
+	0%{
+		background-color: rgb(255, 139, 31);
+	}
+	99%{
+		background-color: rgb(255, 139, 31);
+		
+	}
+	100%{
+		background-color: yellow;
+	}
 	
 }
 
@@ -419,6 +988,17 @@ a:active, a:focus { outline: none; }
 		transform: translate(0px, 0px) ;
 	}
 }
+
+@keyframes pacman-dead {
+	0%{
+		;
+	}
+	100%{
+		opacity: 0;
+	}
+}
+
+
 
 /*+++++++++++++++++++++++++++++++++++++++++PACMAN MOVING ANIMATION+++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
@@ -649,9 +1229,11 @@ a:active, a:focus { outline: none; }
 .floor_8th .floor__dot:nth-child(26){
 	transform: scale(2.5);
 	border-radius: 35%;
+	opacity: 0;
+	animation:game-over 0.3s ease infinite alternate forwards 0.5s;
 }
 .floor_8th .floor__dot:nth-child(26){
-	animation: dots-hide 1s linear 8.8s forwards;
+	animation: game-over 0.3s ease infinite alternate forwards 0.5s, dots-hide 1s linear 8.8s forwards;
 }
 .floor_8th .floor__dot:nth-child(15){
 	animation: dots-hide 1s linear 13.5s forwards;
@@ -1021,6 +1603,8 @@ a:active, a:focus { outline: none; }
 .floor_28th .floor__dot:nth-child(26){
 	transform: scale(2.5);
 	border-radius: 35%;
+	opacity: 0;
+	animation:game-over 0.3s ease infinite alternate forwards 0.5s;
 }
 /*================================29=======================*/
 .floor_29th{

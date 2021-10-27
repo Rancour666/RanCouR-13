@@ -1,0 +1,11 @@
+@font-face {
+    font-family: 'Emulogic';
+    src: url('Emulogic.eot');
+    src: url('Emulogic.eot?#iefix') format('embedded-opentype'),
+        url('Emulogic.woff2') format('woff2'),
+        url('Emulogic.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
