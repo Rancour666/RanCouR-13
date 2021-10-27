@@ -128,7 +128,8 @@ a:active, a:focus { outline: none; }
 
 
 .pacman {
-	transform: scale(0.95);
+	transform: scale(0.9);
+	margin: -50px 0px 0px 0px;
 }
 .pacman__container {
 }
@@ -189,7 +190,7 @@ a:active, a:focus { outline: none; }
 	width: 734px;
 	transform: scale(1.5);
 	background-color: #000;
-	z-index: 90;
+	z-index: 0;
 }
 
 
