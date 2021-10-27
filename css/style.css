@@ -55,7 +55,7 @@ html, body {
 	line-height: 1;
 	font-size: 18px;
 	font-family: 'Roboto';
-	background-color: rgb(0, 0, 0);
+	background: url('../img/room.jpg') 0 0 / cover no-repeat;
 }
 
 a:active, a:focus { outline: none; }
@@ -181,6 +181,18 @@ a:active, a:focus { outline: none; }
 	width: 180px;
 	filter: brightness(0.9);
 }
+.pacman__screen-black{
+	position: absolute;
+	top: 190px;
+	left: 278px;
+	height: 570px;
+	width: 734px;
+	transform: scale(1.5);
+	background-color: #000;
+	z-index: 90;
+}
+
+
 /*=====================================GAME INFO MESSEGES==================================================================*/
 .pacman__player-one {
 	position: absolute;
