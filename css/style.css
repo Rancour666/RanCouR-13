@@ -55,7 +55,7 @@ html, body {
 	line-height: 1;
 	font-size: 18px;
 	font-family: 'Roboto';
-	background-color: black;
+	background-color: rgb(0, 0, 0);
 }
 
 a:active, a:focus { outline: none; }
@@ -77,8 +77,25 @@ a:active, a:focus { outline: none; }
 }
 
 .maze{
-	visibility: hidden;
+	opacity: 0;
+	animation:game-over 0.3s ease infinite alternate forwards 9.5s,
+	stop-blincking 1s linear 1 forwards 24s;
 }
+
+
+@keyframes stop-blincking {
+
+	0%{
+		opacity: 0;
+	}
+	100%{
+		opacity: 0;
+	}
+}
+
+
+
+
 .pacman__gates{
 	position: absolute;
 	top: 310px;
@@ -94,7 +111,7 @@ a:active, a:focus { outline: none; }
 	height: 8px;
 	width: 48px;
 	background-color: #fff;
-	animation: gates-open 4s ease-in 1 forwards running 15s ;
+	animation: gates-open 4s ease-in 1 forwards running 14s ;
 	overflow: hidden;
 }
 
@@ -118,14 +135,52 @@ a:active, a:focus { outline: none; }
 }
 .pacman__body {
 	min-height: 100vh;
+	position: relative;
 }
 
 .pacman__tv-bezel{
 	position: relative;
 	width: 100%;
 	height: 100%;
+	z-index: 1003;
 }
 
+
+
+
+
+.pacman__screen img{
+	position: absolute;
+	top: 90px;
+	left: 123px;
+	width: 1080px;
+	z-index: 100;
+	opacity: 0.8;
+}
+.pacman__under-screen img{
+	position: absolute;
+	top: 90px;
+	left: 123px;
+	width: 1080px;
+	z-index: 1000;
+}
+.pacman__nes img{
+	position: absolute;
+	top: 800px;
+	right: 0px;
+	width: 700px;
+	z-index: 2000;
+	filter: brightness(0.7);
+}
+.pacman__cartridge img{
+	position: absolute;
+	top: 905px;
+	right: 643px;
+	z-index: 2010;
+	width: 180px;
+	filter: brightness(0.9);
+}
+/*=====================================GAME INFO MESSEGES==================================================================*/
 .pacman__player-one {
 	position: absolute;
 	position: absolute;
@@ -137,7 +192,7 @@ a:active, a:focus { outline: none; }
 	font-size: 26px;
 	opacity: 0;
 	animation:game-over 0.3s ease infinite alternate forwards 0s,
-	player-one-stop 0.1s linear 1 forwards 10s;
+	player-one-stop 0.1s linear 1 forwards 5s;
 }
 .pacman__ready {
 	position: absolute;
@@ -149,16 +204,16 @@ a:active, a:focus { outline: none; }
 	font-size: 26px;
 	opacity: 0;
 	animation:game-over 0.3s ease infinite alternate forwards 0s,
-	player-one-stop 0.1s linear 1 forwards 10s;
+	player-one-stop 0.1s linear 1 forwards 5s;
 }
 .pacman__hi-score{
 	top:150px;
 	left: 155px;
-	
 	position: absolute;
 	font-family:'Emulogic';
 	font-size: 24px;
 	color:brown;
+
 }
 .pacman__1up{
 	top:239px;
@@ -172,7 +227,7 @@ a:active, a:focus { outline: none; }
 }
 .pacman__hi-score-points{
 	top:194px;
-	left: 205px;
+	left: 225px;
 	
 	position: absolute;
 	font-family:'Emulogic';
@@ -181,7 +236,7 @@ a:active, a:focus { outline: none; }
 }
 .pacman__player-points{
 	top:284px;
-	left: 250px;
+	left: 270px;
 	
 	position: absolute;
 	font-family:'Emulogic';
@@ -244,18 +299,18 @@ a:active, a:focus { outline: none; }
 	font-family:'Emulogic';
 	font-size: 12px;
 	color: rgb(3, 136, 184);
-	animation: cherry-point-appear 3s linear 1 forwards 42s;
+	animation: cherry-point-appear 5s linear 1 forwards 42s;
 }
 .pacman__strawberry-point{
 	position: absolute;
 	top:247px;
-	left: 867px;
+	left: 865px;
 	opacity: 0;
 	position: absolute;
 	font-family:'Emulogic';
 	font-size: 12px;
 	color: rgb(3, 136, 184);
-	animation: cherry-point-appear 3s linear 1 forwards 54s;
+	animation: cherry-point-appear 5s linear 1 forwards 54s;
 }
 @keyframes cherry-point-appear {
 	0%{
@@ -389,7 +444,33 @@ a:active, a:focus { outline: none; }
 	height:100%;
 	object-fit: cover;
 	z-index: 3;
+	filter: invert(0);
+	animation:enemy-blinking 0.6s ease infinite alternate forwards 16s,
+	stop-blincking-enemy 1s linear 1 forwards 24s;
 }
+@keyframes enemy-blinking{
+	100%{
+		filter: invert(1);
+	}
+}
+
+
+
+
+
+@keyframes stop-blincking-enemy {
+
+	0%{
+		filter: invert(0);
+	}
+	100%{
+		filter: invert(0);
+	}
+}
+
+
+
+
 .enemy_red {
 	top:348px;
 	left: 300px;
@@ -428,7 +509,7 @@ a:active, a:focus { outline: none; }
 	animation:ghost-shake-pink 2s ease-in 20 alternate running 0.5s,
 	pinky-move 6.5s linear 1 forwards 14.5s,
 	pinky-alive 18s linear 1 forwards 23s,
-	pinky-square-move 8s linear 10 forwards 41s,
+	pinky-square-move 11.6s linear 100 forwards 37.4s,
 	pinky-stop 6000s linear 1 forwards 57.2s;
 	position: absolute;
 	z-index: 7;
@@ -582,10 +663,10 @@ a:active, a:focus { outline: none; }
 }
 @keyframes pinky-stop{
 	0%{
-		transform: translate(-305px, -230px);
+		transform: translate(-230px, -325px) rotateY(-180deg);
 	}
 	100%{
-		transform: translate(-305px, -230px);
+		transform: translate(-230px, -325px) rotateY(-180deg);
 	}
 }
 
@@ -1011,6 +1092,7 @@ a:active, a:focus { outline: none; }
 	background-color: #fff;
 	width: 8px;
 	height: 8px;
+	border-radius: 2.5px;
 }
 
 
