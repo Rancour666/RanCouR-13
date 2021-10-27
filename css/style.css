@@ -166,16 +166,16 @@ a:active, a:focus { outline: none; }
 }
 .pacman__nes img{
 	position: absolute;
-	top: 800px;
-	right: 0px;
+	top: 780px;
+	right: -50px;
 	width: 700px;
 	z-index: 2000;
 	filter: brightness(0.7);
 }
 .pacman__cartridge img{
 	position: absolute;
-	top: 905px;
-	right: 643px;
+	top: 855px;
+	right: 593px;
 	z-index: 2010;
 	width: 180px;
 	filter: brightness(0.9);
