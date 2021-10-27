@@ -872,7 +872,7 @@ a:active, a:focus { outline: none; }
 	pacman-moving-up 1s linear 1 forwards 7.5s,
 	pacman-moving-forward-3 1s linear 1 forwards 8.3s,
 	pacman-moving-up-2 1s linear 1 forwards 9.3s,
-	pacman-angry 30s linear 1 forwards 9.5s,
+	pacman-angry 14.5s linear 1 forwards 9.5s,
 	pacman-moving-back 3.5s linear 1 forwards 10.3s,
 	pacman-moving-down-2 1s linear 1 forwards 13.8s,
 	pacman-moving-back-2 3s linear 1 forwards 14.8s,
@@ -906,7 +906,7 @@ a:active, a:focus { outline: none; }
 	height: 100%;
 	clip-path: polygon(105% 74%, 38% 48%, 105% 21%);
 	animation: pacman-eat 0.7s infinite 0s,
-	pacman-angry-eat 0.2s 150 9.8s;
+	pacman-angry-eat 0.2s 72 9.8s;
 	
 }
 
